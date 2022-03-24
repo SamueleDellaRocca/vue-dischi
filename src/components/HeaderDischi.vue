@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid sfondo">
-    <div class="row">
+    <div class="row align-items-center altezza">
       <div class="col-10"><h1 class="text-white">Spotify</h1></div>
       <div class="col-2"><h1 class="text-white">Spotify</h1></div>
     </div>
@@ -17,5 +17,9 @@ export default {
 .sfondo {
   background-color: hsl(210deg 21% 23%);
   height: 100px;
+}
+
+.altezza {
+  height: 100%;
 }
 </style>

@@ -1,5 +1,7 @@
 <template>
-  <div class="col-2 text-center padding_card sfondo_color">
+  <div
+    class="col-5 col-sm-4 col-md-3 col-lg-2 text-center padding_card sfondo_color"
+  >
     <div class="immagine">
       <img class="img" :src="img" :alt="titolo" />
     </div>
