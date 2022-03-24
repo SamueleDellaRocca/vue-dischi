@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid sfondo">
-    <div class="container">
+    <div class="caricamento" v-if="arrayAlbum == null">
+      <h1>Dati in fase di caricamento...</h1>
+    </div>
+    <div v-else class="container">
       <div class="row gap-3 justify-content-center padding">
         <carta-disco
           v-for="disco in arrayAlbum"
@@ -30,12 +33,14 @@ export default {
   },
 
   created() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((response) => {
-        console.log(response);
-        this.arrayAlbum = response.data.response;
-      });
+    setTimeout(() => {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/array/music")
+        .then((response) => {
+          console.log(response);
+          this.arrayAlbum = response.data.response;
+        });
+    }, 3000);
   },
 };
 </script>
@@ -47,5 +52,17 @@ export default {
 
 .padding {
   padding: 3rem 0px;
+}
+
+.caricamento {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+
+  h1 {
+    margin: auto;
+    font-size: 3rem;
+    color: white;
+  }
 }
 </style>
