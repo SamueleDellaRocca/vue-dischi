@@ -3,11 +3,11 @@
     class="col-5 col-sm-4 col-md-3 col-lg-2 text-center padding_card sfondo_color"
   >
     <div class="immagine">
-      <img class="img" :src="img" :alt="titolo" />
+      <img class="img" :src="AlbumData.poster" :alt="AlbumData.title" />
     </div>
-    <h2 class="titolo text-white">{{ titolo }}</h2>
-    <div class="grigio">{{ autore }}</div>
-    <div class="grigio">{{ anno }}</div>
+    <h2 class="titolo text-white">{{ AlbumData.title }}</h2>
+    <div class="grigio">{{ AlbumData.author }}</div>
+    <div class="grigio">{{ AlbumData.year }}</div>
   </div>
 </template>
 
@@ -15,10 +15,7 @@
 export default {
   name: "CartaDisco",
   props: {
-    img: String,
-    titolo: String,
-    autore: String,
-    anno: String,
+    AlbumData: Object,
   },
 };
 </script>

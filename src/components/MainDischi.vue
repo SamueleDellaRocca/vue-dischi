@@ -5,10 +5,7 @@
         <carta-disco
           v-for="disco in arrayAlbum"
           :key="disco.title"
-          :img="disco.poster"
-          :titolo="disco.title"
-          :autore="disco.author"
-          :anno="disco.year"
+          :album-data="disco"
         ></carta-disco>
       </div>
     </div>
