@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header-dischi></header-dischi>
-    <main-dischi></main-dischi>
+    <header-dischi @cambioGenere="impostaGenere"></header-dischi>
+    <main-dischi :genere-selezionato="opzioneSelezionata"></main-dischi>
   </div>
 </template>
 
@@ -14,6 +14,18 @@ export default {
   components: {
     HeaderDischi,
     MainDischi,
+  },
+
+  data() {
+    return {
+      opzioneSelezionata: "",
+    };
+  },
+
+  methods: {
+    impostaGenere(opzioneSelezionata) {
+      this.opzioneSelezionata = opzioneSelezionata;
+    },
   },
 };
 </script>

@@ -6,7 +6,7 @@
     <div v-else class="container">
       <div class="row gap-3 justify-content-center padding">
         <carta-disco
-          v-for="disco in arrayAlbum"
+          v-for="disco in funzioneCambioGenere()"
           :key="disco.title"
           :album-data="disco"
         ></carta-disco>
@@ -28,6 +28,10 @@ export default {
     };
   },
 
+  props: {
+    genereSelezionato: String,
+  },
+
   components: {
     CartaDisco,
   },
@@ -41,6 +45,30 @@ export default {
           this.arrayAlbum = response.data.response;
         });
     }, 3000);
+  },
+
+  methods: {
+    funzioneCambioGenere(response) {
+      if (this.genereSelezionato == "general") {
+        this.arrayAlbum = response.data.response;
+      } else if (this.genereSelezionato == "rock") {
+        this.arrayAlbum = response.data.response.filter((Element) => {
+          return Element.genre == "Rock";
+        });
+      } else if (this.genereSelezionato == "pop") {
+        this.arrayAlbum = response.data.response.filter((Element) => {
+          return Element.genre == "Pop";
+        });
+      } else if (this.genereSelezionato == "metal") {
+        this.arrayAlbum = response.data.response.filter((Element) => {
+          return Element.genre == "Metal";
+        });
+      } else {
+        this.arrayAlbum = response.data.response.filter((Element) => {
+          return Element.genre == "Jazz";
+        });
+      }
+    },
   },
 };
 </script>
