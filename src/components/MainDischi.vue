@@ -49,7 +49,9 @@ export default {
 
   methods: {
     funzioneCambioGenere() {
-      if (this.genereSelezionato == "general") {
+      if (this.genereSelezionato == "") {
+        this.arrayFiltrato = this.arrayAlbum;
+      } else if (this.genereSelezionato == "general") {
         this.arrayFiltrato = this.arrayAlbum;
       } else {
         this.arrayFiltrato = this.arrayAlbum.filter((elemento) => {
