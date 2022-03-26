@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       arrayAlbum: null,
+      arrayFiltrato: [],
     };
   },
 
@@ -41,33 +42,26 @@ export default {
       axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then((response) => {
-          console.log(response);
           this.arrayAlbum = response.data.response;
         });
     }, 3000);
   },
 
   methods: {
-    funzioneCambioGenere(response) {
+    funzioneCambioGenere() {
       if (this.genereSelezionato == "general") {
-        this.arrayAlbum = response.data.response;
-      } else if (this.genereSelezionato == "rock") {
-        this.arrayAlbum = response.data.response.filter((Element) => {
-          return Element.genre == "Rock";
-        });
-      } else if (this.genereSelezionato == "pop") {
-        this.arrayAlbum = response.data.response.filter((Element) => {
-          return Element.genre == "Pop";
-        });
-      } else if (this.genereSelezionato == "metal") {
-        this.arrayAlbum = response.data.response.filter((Element) => {
-          return Element.genre == "Metal";
-        });
+        this.arrayFiltrato = this.arrayAlbum;
       } else {
-        this.arrayAlbum = response.data.response.filter((Element) => {
-          return Element.genre == "Jazz";
+        this.arrayFiltrato = this.arrayAlbum.filter((elemento) => {
+          if (
+            elemento.genre.toLowerCase() == this.genereSelezionato.toLowerCase()
+          ) {
+            return elemento;
+          }
         });
       }
+
+      return this.arrayFiltrato;
     },
   },
 };
@@ -76,6 +70,7 @@ export default {
 <style scoped lang="scss">
 .sfondo {
   background-color: hsl(209deg 33% 17%);
+  min-height: calc(100vh - 100px);
 }
 
 .padding {

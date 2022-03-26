@@ -11,7 +11,7 @@
           id="genere"
           @change="$emit('cambioGenere', opzioneSelezionata)"
         >
-          <option default value="general">General</option>
+          <option value="general">General</option>
           <option value="rock">Rock</option>
           <option value="pop">Pop</option>
           <option value="metal">Metal</option>
