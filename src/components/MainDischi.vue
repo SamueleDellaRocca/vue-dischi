@@ -6,7 +6,7 @@
     <div v-else class="container">
       <div class="row gap-3 justify-content-center padding">
         <carta-disco
-          v-for="disco in funzioneCambioGenere()"
+          v-for="disco in funzioneCambioGenere"
           :key="disco.title"
           :album-data="disco"
         ></carta-disco>
@@ -47,14 +47,15 @@ export default {
     }, 3000);
   },
 
-  methods: {
+  computed: {
     funzioneCambioGenere() {
+      let arrayFiltrato = [];
       if (this.genereSelezionato == "") {
-        this.arrayFiltrato = this.arrayAlbum;
+        arrayFiltrato = this.arrayAlbum;
       } else if (this.genereSelezionato == "general") {
-        this.arrayFiltrato = this.arrayAlbum;
+        arrayFiltrato = this.arrayAlbum;
       } else {
-        this.arrayFiltrato = this.arrayAlbum.filter((elemento) => {
+        arrayFiltrato = this.arrayAlbum.filter((elemento) => {
           if (
             elemento.genre.toLowerCase() == this.genereSelezionato.toLowerCase()
           ) {
@@ -63,7 +64,7 @@ export default {
         });
       }
 
-      return this.arrayFiltrato;
+      return arrayFiltrato;
     },
   },
 };
